@@ -1,0 +1,155 @@
+/* CSS With themes reset*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+
+:root{
+    /*Theme 1*/
+    /*Backgrounds*/
+    --t1-background-color-main: hsl(222, 26%, 31%); 
+    --t1-background-color-outcome: hsl(223, 31%, 20%);
+    --t1-background-color-keypad: hsl(224, 36%, 15%);
+
+    /*keys*/
+    --t1-keys-background-dark-blue: hsl(225, 21%, 49%);
+    --t1-keys-shadow-dark-blue: hsl(224, 28%, 35%);
+    --t1-keys-background-red: hsl(6, 63%, 50%);
+    --t1-keys-shadow-dark-red: hsl(6, 70%, 34%);
+    --t1-keys-background-grayish-orange: hsl(30, 25%, 89%);
+    --t1-keys-shadow-dark-red: hsl(28, 16%, 65%);
+
+    /*Text*/
+    --t1-text-dark-gray: hsl(221, 14%, 31%);
+    --t1-text-white: hsl(0, 0%, 100%);
+
+    /*Theme 2*/
+    /*Backgrounds*/
+    --t2-background-color-main: hsl(0, 0%, 90%); 
+    --t2-background-color-outcome: hsl(0, 5%, 81%);
+    --t2-background-color-keypad: hsl(0, 0%, 93%);
+
+    /*Keys*/
+    --t2-keys-background-cyan: hsl(185, 42%, 37%);
+    --t2-keys-shadow-cyan: hsl(185, 58%, 25%);
+    --t2-keys-background-ornage: hsl(25, 98%, 40%);
+    --t2-keys-shadow-ornage: hsl(25, 99%, 27%);
+    --t2-keys-background-yellow: hsl(45, 7%, 89%);
+    --t2-keys-shadow-yellow: hsl(35, 11%, 61%);
+
+    /*Text*/
+    --t2-text-dark-gray: hsl(60, 10%, 19%);
+    --t2-text-white: hsl(0, 0%, 100%);
+
+    /*Theme 3*/
+    /*Backgrounds*/
+    --t3-background-color-main: hsl(268, 75%, 9%); 
+    --t3-background-color-keypad-outcome: hsl(268, 71%, 12%);
+
+    /*Keys*/
+    --t3-keys-background-violet: hsl(281, 89%, 26%);
+    --t3-keys-shadow-magenta: hsl(285, 91%, 52%);
+    --t3-keys-background-cyan: hsl(176, 100%, 44%);
+    --t3-keys-shadow-cyan: hsl(177, 92%, 70%);
+    --t3-keys-background-Darkviolet: hsl(268, 47%, 21%);
+    --t3-keys-shadow-Darkmagenta: hsl(290, 70%, 36%);
+
+    /*Text*/
+    --t3-text-light-yellow:hsl(52, 100%, 62%);
+    --t3-text-dark-blue:hsl(198, 20%, 13%);
+    --t3-text-white:hsl(0, 0%, 100%);
+
+
+    /*Fonts general*/
+    --font-size-numbers: 32px;
+    --font-family: "League Spartan", sans-serif;
+    --font-weight: 700;
+}
+
+
+/*Basic style not theme related!*/
+body{
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid yellow;
+}
+
+/*Slider styles not theme based*/
+
+.theme__slider{ /*Seperates theme title from the slider*/
+    display: flex;
+    flex-direction: row;
+    border: 2px solid palevioletred;
+}
+
+.theme__slider div:first-child{
+    overflow: visible;
+}
+
+.list-slider-header{ /*Gaps the  1 2 3 above the slider*/
+    display: flex;
+    flex-direction: column;
+}
+
+.number-list{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.width-70{ /*Sets width of 50%*/
+    display: flex;
+    max-width: 70%;
+    margin-left: auto;
+}
+
+
+/*Outcome styles not theme based*/
+
+.main{
+    margin: 1em 0;
+    background-color: red; /* TEMP */
+    text-align: right;
+    padding: 1em 2em;
+}
+
+/* keypad styles not theme based*/
+
+.background__keypad{ /*TEMP*/
+    padding: 15px;
+    background-color: red;
+}
+
+.keypad-line{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1em;
+    margin: .5em;
+    padding: .5em;
+}
+
+.keypad-line-2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+    margin: .5em;
+    padding: .5em;
+}
+
+/*button styles not theme based*/
+.btn{
+    padding: 1em .5em;
+}
