@@ -34,7 +34,7 @@
               <label class="list-slider slider title-color">3</label>
             </div>
             <div>
-              <input type="range" min="1" max="3" step="1" class="width-70 cursor" id="range-slider">
+              <input type="range" min="1" max="3" step="1" class="width-70 cursor custom-slider" id="range-slider">
             </div>
           </div>
         </div>
@@ -46,62 +46,89 @@
 
   <main>
     <div class="main background__outcome">
-      <h1 class="outcome">399,981</h1>
+      <h1 class="outcome"></h1>
     </div>
   </main>
 
   <section class="buttons">
     <div class="background__keypad">
       <div class="keypad-line">
-        <button type="button" class="btn calc-btns" value="7">7</button>
-        <button type="button" class="btn calc-btns" value="8">8</button>
-        <button type="button" class="btn calc-btns" value="9">9</button>
-        <button type="button" class="btn del" value="DEL">DEL</button>
+        <button type="button" class="btn calc-btns" onclick="appendDisplay('7')" value="7">7</button>
+        <button type="button" class="btn calc-btns" onclick="appendDisplay('8')" value="8">8</button>
+        <button type="button" class="btn calc-btns" onclick="appendDisplay('9')" value="9">9</button>
+        <button type="button" class="btn del" onclick="del()" value="DEL">DEL</button> 
       </div>
       <div class="keypad-line">
-        <button type="button" class="btn calc-btns" value="4">4</button>
-        <button type="button" class="btn calc-btns" value="5">5</button>
-        <button type="button" class="btn calc-btns" value="6">6</button>
-        <button type="button" class="btn calc-btns" value="+">+</button>
+        <button type="button" class="btn calc-btns" onclick="appendDisplay('4')" value="4">4</button>
+        <button type="button" class="btn calc-btns" onclick="appendDisplay('5')" value="5">5</button>
+        <button type="button" class="btn calc-btns" onclick="appendDisplay('6')" value="6">6</button>
+        <button type="button" class="btn calc-btns" onclick="appendDisplay('+')" value="+">+</button>
       </div>
       <div class="keypad-line">
-        <button type="button" class="btn calc-btns" value="1">1</button>
-        <button type="button" class="btn calc-btns" value="2">2</button>
-        <button type="button" class="btn calc-btns" value="3">3</button>
-        <button type="button" class="btn calc-btns" value="-">-</button>
+        <button type="button" class="btn calc-btns" onclick="appendDisplay('1')" value="1">1</button>
+        <button type="button" class="btn calc-btns" onclick="appendDisplay('2')" value="2">2</button>
+        <button type="button" class="btn calc-btns" onclick="appendDisplay('3')" value="3">3</button>
+        <button type="button" class="btn calc-btns" onclick="appendDisplay('-')" value="-">-</button>
       </div>
       <div class="keypad-line">
-        <button type="button" class="btn calc-btns" value=".">.</button>
-        <button type="button" class="btn calc-btns" value="0">0</button>
-        <button type="button" class="btn calc-btns" value="/">/</button>
-        <button type="button" class="btn calc-btns" value="x">x</button>
+        <button type="button" class="btn calc-btns" onclick="appendDisplay('.')" value=".">.</button>
+        <button type="button" class="btn calc-btns" onclick="appendDisplay('0')" value="0">0</button>
+        <button type="button" class="btn calc-btns" onclick="appendDisplay('/')" value="/">/</button>
+        <button type="button" class="btn calc-btns" onclick="appendDisplay('x')" value="x">x</button>
       </div>
       <div class="keypad-line-2">
-        <button type="button" class="btn reset" value="RESET">RESET</button>
-        <button type="button" class="btn equal" value="=">=</button>
+        <button type="button" class="btn reset" onclick="clearDisplay()" value="RESET">RESET</button>
+        <button type="button" class="btn equal" onclick="calculate()" value="=">=</button>
       </div>
     </div>
   </section>
 
 
-
+<script src="index.js"></script>
 <script>
-  const range = document.getElementById('range-slider');
-  range.oninput = function() {
-      document.querySelector("body").classList = [];
-      if (this.value == 1){
-        document.querySelector("body").classList.add("theme1");
-      }
-      else if (this.value == 2){
-        document.querySelector("body").classList.add("theme2");
-        
-      }
-      else if (this.value == 3){
-        document.querySelector("body").classList.add("theme3");
-        
-      }
-    };
-</script>
+const range = document.getElementById('range-slider');
+const themeSliderContainer = document.querySelector('.theme__slider');
 
+function setTheme(theme) {
+    document.body.classList = [];
+    document.body.classList.add(theme);
+    localStorage.setItem('selectedTheme', theme);
+
+    
+    adjustSliderPosition(theme);
+}
+
+
+function adjustSliderPosition(theme) {
+    if (theme === 'theme1') {
+        range.value = 1;
+        themeSliderContainer.style.right = '20px';
+    } else if (theme === 'theme2') {
+        range.value = 2;
+        themeSliderContainer.style.right = '50px';
+    } else if (theme === 'theme3') {
+        range.value = 3;
+        themeSliderContainer.style.right = '80px';
+    }
+}
+
+
+range.oninput = function() {
+    if (this.value == 1) {
+        setTheme('theme1');
+    } else if (this.value == 2) {
+        setTheme('theme2');
+    } else if (this.value == 3) {
+        setTheme('theme3');
+    }
+};
+
+const storedTheme = localStorage.getItem('selectedTheme');
+if (storedTheme) {
+    setTheme(storedTheme);
+} else {
+    setTheme('theme1');
+}
+</script>
 </body>
 </html>
